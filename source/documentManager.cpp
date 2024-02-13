@@ -43,7 +43,7 @@ void DocumentManager::createDocument ()
 	
 	if(!newFile.is_open())
 	{
-		std::invalid_argument("Error: Failed to Open Filxe: ");
+		throw std::invalid_argument("Error: Failed to Open Filxe: ");
 	}
 	else
 	{
@@ -76,11 +76,11 @@ void DocumentManager::editDocument ()
         chekFileName(fileName);
 
         std::ofstream editFile;
-	editFile.open(fileName);
+	editFile.open(fileName, std::ios::app);
 
         if(!editFile.is_open())
         {
-                std::invalid_argument("Error: Failed to Open File: ");
+                throw std::invalid_argument("Error: Failed to Open File: ");
         }
         else
         {
@@ -118,7 +118,7 @@ void DocumentManager::viewDocument ()
 
         if(!viewFile.is_open())
         {
-                std::invalid_argument("Error: Failed to Open File: ");
+                throw std::invalid_argument("Error: Failed to Open File: ");
         }
         else
         {
